@@ -1,0 +1,22 @@
+#btn_grd{
+    display:grid;
+    grid-template-columns:auto auto auto;
+    width: 10vw;
+    height:83%;
+    margin:auto;
+    padding:0px;
+    margin-top:3px;
+}
+button{
+    border-radius:5px;
+}
+button:nth-child(3n+1)
+{
+    background-color: rgb(50 72 72);
+    color:#dcdc1b;
+}
+button:nth-child(1)
+{
+    background-color:#0051ff;
+    color:white;
+}
