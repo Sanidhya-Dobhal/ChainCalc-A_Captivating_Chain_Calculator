@@ -1,22 +1,35 @@
 #btn_grd{
     display:grid;
     grid-template-columns:auto auto auto;
-    width: 10vw;
-    height:83%;
+    width: 258px;
+    height:366px;
     margin:auto;
     padding:0px;
     margin-top:3px;
+
 }
 button{
-    border-radius:5px;
+    border-radius:7.74px;
+    background-color: rgb(236,233,226);
+    color:black;
+    margin:6.2px;
+    border:0px;
+    padding:0px;
+    font-size:30px;
 }
-button:nth-child(3n+1)
+button:nth-child(3n)
 {
-    background-color: rgb(50 72 72);
-    color:#dcdc1b;
+    background-color: rgb(211,207,202);
+    color:black;
 }
-button:nth-child(1)
+button:nth-child(3)
 {
     background-color:#0051ff;
+    color:white;
+}
+button:nth-child(17)
+{
+    grid-column:2/4;
+    background-color:rgb(51,50,48);
     color:white;
 }

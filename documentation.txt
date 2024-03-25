@@ -1,0 +1,1 @@
+Using pixels and not vw in this project was better as the calculator is just wide and just long to fit phone size and looks fine in bigger displays as well

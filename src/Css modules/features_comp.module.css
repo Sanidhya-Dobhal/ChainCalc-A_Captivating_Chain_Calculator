@@ -1,0 +1,32 @@
+#features_div{
+    text-align:left;
+    width:965px;
+    margin:auto;
+}
+#feat_head{
+    text-align:center;
+}
+li{
+    margin-bottom:15px;
+}
+p,li{
+    padding-left:20px;
+}
+.div_in_feat{
+    background-color:rgb(241,237,231);
+    padding:24px;
+    border-radius:24px;
+    margin:30px;
+}
+@media screen and (max-width:965px)
+{
+    #features_div{
+        width:auto;
+    }
+}
+@media screen and (max-width:650px)
+{
+    p,li{
+        padding-left:0px;
+    }
+}

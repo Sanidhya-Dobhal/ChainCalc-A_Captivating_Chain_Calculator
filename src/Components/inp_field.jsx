@@ -4,7 +4,7 @@ function Inp_field(props)
     
     return (
     <>
-        <input type = "text" id ={styles["inp_field"]} value = {props.screenState} readOnly/>
+        <input type = "text" id ={styles["inp_field"]} style={{color:props.color}} value = {props.screenState} readOnly/>
     </>
     )
 }
