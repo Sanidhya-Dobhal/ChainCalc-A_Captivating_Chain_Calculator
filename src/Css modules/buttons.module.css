@@ -1,7 +1,7 @@
 #btn_grd{
     display:grid;
     grid-template-columns:auto auto auto;
-    width: 258px;
+    width: 260px;
     height:366px;
     margin:auto;
     padding:0px;

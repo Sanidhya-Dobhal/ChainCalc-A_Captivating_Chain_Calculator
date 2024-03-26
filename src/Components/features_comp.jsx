@@ -2,7 +2,7 @@ import styles from "../Css modules/features_comp.module.css";
 function Featured_comp() {
   return (
     <div id={styles["features_div"]}>
-      <div class = {styles.div_in_feat}>
+      <div className = {styles.div_in_feat}>
         <h3>Chain Calculation:</h3>
         <p>
           Chain Calculation enables the seamless continuation of operations
@@ -15,7 +15,7 @@ function Featured_comp() {
           <i>This functionality is often seen in phone calculators.</i>
         </p>
       </div>
-      <div class = {styles.div_in_feat}>
+      <div className = {styles.div_in_feat}>
       <h3>Equal's (=) Functionality:</h3>
       <ul>
         <li>
@@ -37,7 +37,7 @@ function Featured_comp() {
         <li>Results are treated differently from regular numbers.</li>
       </ul>
       </div>
-      <div class = {styles.div_in_feat}>
+      <div className = {styles.div_in_feat}>
       <h3>Error handling</h3>
       <p>
         In case of an invalid expression Syntax Error is thrown and the user is
