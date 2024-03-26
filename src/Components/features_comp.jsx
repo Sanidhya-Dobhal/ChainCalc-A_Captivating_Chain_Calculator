@@ -30,7 +30,7 @@ function Featured_comp() {
           If the result is on display and "=" is pressed again, the display
           color turns back to black, treating the result as a regular number.
           Doing this incorporates a functionality similar to{" "}
-          <b style={{ fontWeight: 600 }}>Ans</b> in many calulators, but
+          <b style={{ fontWeight: 600 }}>Ans</b> in many calculators, but
           treating it as a number is more beneficial as we can edit the 'Ans'
           furthur in a way we would like.
         </li>
