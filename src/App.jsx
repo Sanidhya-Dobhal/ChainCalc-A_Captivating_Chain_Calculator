@@ -1,4 +1,4 @@
-import { useState,useEffect } from 'react'
+import React,{ useState} from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -6,6 +6,8 @@ import Inp_field from "./Components/inp_field.jsx"
 import Buttons from "./Components/buttons.jsx"
 import styles from "./Css modules/app.module.css";
 import Features_comp from "./Components/features_comp.jsx";
+import Total_no_comp from "./Components/total_no_comp.jsx";
+
 
 function App() {
   let [ScreenState,setScreenState] = useState("");
@@ -107,9 +109,13 @@ function App() {
       else
       setExp(exp + event.target.innerHTML);//Adding the numbers to exp string
     }
-    console.log(exp)
-  }
+    if(event.target.innerHTML === '='){
+      no_of_comp.current +=1;
+      console.log(`The total number of computations attempted is ${no_of_comp.current}`);
+    }
+    console.log(exp);
   console.log("The expression right now : ",exp);
+  }
   }
   return (
     <>
