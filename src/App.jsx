@@ -121,7 +121,7 @@ function App() {
     <>
     <h1 style = {{fontWeight:700}}>ChainCalc.com</h1>
     <div id = {styles["par"]}>
-    <div style = {{margin:"50px auto",backgroundColor:"rgb(254,250,243)"}} id = {styles["calc"]}>
+    <div id = {styles["calc"]}>
       <Inp_field screenState = {ScreenState} color ={color}/>
       <Buttons handler = {hand} screenState = {ScreenState} screenSet = {setScreenState}/>
     </div>
