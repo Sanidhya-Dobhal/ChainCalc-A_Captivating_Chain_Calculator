@@ -1,13 +1,15 @@
-import React,{ useState} from 'react'
+import React,{ useState,useContext} from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
-import Inp_field from "./Components/inp_field.jsx"
-import Buttons from "./Components/buttons.jsx"
+import './App.css';
+import Inp_field from "./Components/inp_field.jsx";
+import Buttons from "./Components/buttons.jsx";
 import styles from "./Css modules/app.module.css";
 import Features_comp from "./Components/features_comp.jsx";
 import Total_no_comp from "./Components/total_no_comp.jsx";
-
+import { Color} from './store/context1.jsx';
+import {ScreenStateCont} from './store/context1.jsx';
+import { HandCont} from './store/context1.jsx';
 
 function App() {
   let [ScreenState,setScreenState] = useState("");
@@ -20,7 +22,7 @@ function App() {
   function hand(event)
   {
     let operators_arr =['+','-','*','/'];
-    setColor("Black");
+    color = setColor("Black");
     if(ScreenState==="Syntax Error" || ScreenState ==="Enter number"){
       if(operators_arr.includes(event.target.innerHTML.trim())|| event.target.innerHTML === '=')
       {
@@ -75,11 +77,10 @@ function App() {
       console.log("finalRes value is ",finalRes);
       if(exp!==""){
         try{
-        console.log("iddhhar");
         setScreenState(eval(exp));
         setFinalRes(eval(exp));
         console.log("The value of screenState and FinalRes is going to be: ",eval(exp));
-        setColor("Green");
+        color = setColor("Green");
         setRetain(1);
         }
         catch(err){
@@ -98,7 +99,6 @@ function App() {
         setExp(String(exp).substring(0,String(exp).length-1));//We know exp would be null before setState, so let me set exp by equating it to the required exp 
       }
       else{
-        console.log("are you mine ?")
         setScreenState("");//Expression does not need any change when the screen is blank and ScreenState is set to null as otherwise we will get C on the display 
       }
     }
@@ -109,10 +109,6 @@ function App() {
       else
       setExp(exp + event.target.innerHTML);//Adding the numbers to exp string
     }
-    if(event.target.innerHTML === '='){
-      no_of_comp.current +=1;
-      console.log(`The total number of computations attempted is ${no_of_comp.current}`);
-    }
     console.log(exp);
   console.log("The expression right now : ",exp);
   }
@@ -121,13 +117,19 @@ function App() {
     <>
     <h1 style = {{fontWeight:700}}>ChainCalc.com</h1>
     <div id = {styles["par"]}>
-    <div style = {{margin:"50px auto",backgroundColor:"rgb(254,250,243)"}} id = {styles["calc"]}>
-      <Inp_field screenState = {ScreenState} color ={color}/>
-      <Buttons handler = {hand} screenState = {ScreenState} screenSet = {setScreenState}/>
+    <div id = {styles["calc"]}> 
+    <ScreenStateCont.Provider value = {ScreenState}>
+      <Color.Provider value ={color}>
+        <Inp_field />
+      </Color.Provider>
+      <HandCont.Provider value = {hand}>
+        <Buttons/>
+      </HandCont.Provider>
+      </ScreenStateCont.Provider>
     </div>
     <Features_comp />
     </div>
     </>
   )
 }
-export default App
+export default App;
