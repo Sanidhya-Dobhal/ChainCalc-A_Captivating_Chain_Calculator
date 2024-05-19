@@ -2,9 +2,12 @@
   padding:0px;
   font-weight:400;
 }
+html{
+  background-color:#FFFAF2;
+}
 #root {
   max-width: 1440px;
-  margin: auto;
+  margin:0px;
   text-align: center;
 }
 

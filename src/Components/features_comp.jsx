@@ -3,8 +3,8 @@ function Featured_comp() {
   return (
     <div id={styles["features_div"]}>
       <div className = {styles.div_in_feat}>
-        <h3>Chain Calculation:</h3>
-        <p>
+        <h3 style ={{marginBottom:8}}>Principle of Chain Calculation</h3>
+        <p style ={{marginBottom:16}}>
           Chain Calculation enables the seamless continuation of operations
           using the result of a previous calculation into new expression. Upon
           obtaining a result, applying an operator automatically results in
@@ -12,11 +12,11 @@ function Featured_comp() {
           calculation begins. 
         </p>
         <p>
-          <i>This functionality is often seen in phone calculators.</i>
+          This functionality is often seen in phone calculators.
         </p>
       </div>
       <div className = {styles.div_in_feat}>
-      <h3>Equal's (=) Functionality:</h3>
+      <h3>How to use?</h3>
       <ul>
         <li>
           Pressing "=" evaluates the current expression. If valid, the result is

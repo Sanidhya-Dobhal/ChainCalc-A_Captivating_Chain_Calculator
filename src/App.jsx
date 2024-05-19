@@ -7,6 +7,7 @@ import Buttons from "./Components/buttons.jsx"
 import styles from "./Css modules/app.module.css";
 import Features_comp from "./Components/features_comp.jsx";
 import Total_no_comp from "./Components/total_no_comp.jsx";
+import Header from './Components/header.jsx'
 
 
 function App() {
@@ -119,14 +120,12 @@ function App() {
   }
   return (
     <>
-    <h1 style = {{fontWeight:700}}>ChainCalc.com</h1>
-    <div id = {styles["par"]}>
+    <Header />
     <div id = {styles["calc"]}>
       <Inp_field screenState = {ScreenState} color ={color}/>
       <Buttons handler = {hand} screenState = {ScreenState} screenSet = {setScreenState}/>
     </div>
     <Features_comp />
-    </div>
     </>
   )
 }
