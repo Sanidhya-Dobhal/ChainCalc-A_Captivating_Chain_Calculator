@@ -9,4 +9,8 @@ Currently, two official plugins are available:
 
 Unlike traditional calculators, this one works on the principle of <u>chain calculations</u>
 ## Chain Calcuation:
-It is the computations of new expressions which use the result of the last computed expression 
+It is the computations of new expressions which use the result of the last computed expression. 
+<br>
+Check out the
+<u> 
+<a href = 'https://sanidhya-dobhal.github.io/ChainCalc-A_Captivating_Chain_Calculator/'>Live Demo</a></u>
