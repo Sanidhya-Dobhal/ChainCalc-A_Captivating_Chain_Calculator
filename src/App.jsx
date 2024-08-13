@@ -7,13 +7,13 @@ import Features_comp from "./Components/features_comp.jsx";
 import Header from "./Components/header.jsx";
 
 function App() {
-  let [ScreenState, setScreenState] = useState("");
+  const [ScreenState, setScreenState] = useState("");
   let [exp, setExp] = useState("");
-  let [was_op, setWas_op] = useState(0);
-  let [retain, setRetain] = useState(0);
-  let [finalRes, setFinalRes] = useState(0);
+  const [was_op, setWas_op] = useState(0);
+  const [retain, setRetain] = useState(0);
+  const [finalRes, setFinalRes] = useState(0);
   let fi1 = 0;
-  let [color, setColor] = useState("black");
+  const [color, setColor] = useState("black");
   function handler(event) {
     let operators_arr = ["+", "-", "*", "/"];
     setColor("Black");
