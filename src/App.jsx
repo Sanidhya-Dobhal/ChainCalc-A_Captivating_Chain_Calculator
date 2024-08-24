@@ -9,8 +9,8 @@ import Header from "./Components/header.jsx";
 function App() {
   const [ScreenState, setScreenState] = useState("");
   let [exp, setExp] = useState("");
-  const [was_op, setWas_op] = useState(0);
-  const [retain, setRetain] = useState(0);
+  const [wasOp, setWasOp] = useState(false);
+  const [retain, setRetain] = useState(false);
   const [finalRes, setFinalRes] = useState(0);
   let fi1 = 0;
   const [color, setColor] = useState("black");
@@ -30,11 +30,11 @@ function App() {
         setExp(event.target.innerHTML);
       }
     } else {
-      if (retain === 1) {
+      if (retain) {
         if (operators_arr.includes(event.target.innerHTML.trim())) {
           setExp(finalRes);
           fi1 = 1;
-          setWas_op(1);
+          setWasOp(true);
         } else if (event.target.innerHTML === "=") {
           setExp(finalRes);
           fi1 = 1;
@@ -53,17 +53,17 @@ function App() {
         }
         if (event.target.innerHTML !== "C")
           setScreenState(event.target.innerHTML);
-        setRetain(0);
+        setRetain(false);
       } else if (
         !operators_arr.includes(event.target.innerHTML.trim()) &&
-        was_op === 0
+        wasOp === false
       ) {
         setScreenState(ScreenState + event.target.innerHTML);
       } else {
         setScreenState(event.target.innerHTML);
-        setWas_op(1);
+        setWasOp(true);
         if (!operators_arr.includes(event.target.innerHTML.trim())) {
-          setWas_op(0);
+          setWasOp(false);
         }
       }
       if (event.target.innerHTML === "=") {
@@ -73,7 +73,7 @@ function App() {
             setScreenState(eval(exp));
             setFinalRes(eval(exp));
             setColor("Green");
-            setRetain(1);
+            setRetain(true);
           } catch (err) {
             setScreenState("Syntax Error");
           }
