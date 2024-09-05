@@ -1,4 +1,4 @@
-import styles from "../Css modules/inp_field.module.css";
+import styles from "../../Css modules/inp_field.module.css";
 function Inp_field(props) {
   return (
     <>

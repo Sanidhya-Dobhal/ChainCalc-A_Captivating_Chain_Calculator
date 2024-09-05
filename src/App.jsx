@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
-import Inp_field from "./Components/inp_field.jsx";
-import Buttons from "./Components/buttons.jsx";
+import Inp_field from "./Components/Maincalulator/inp_field.jsx";
+import Buttons from "./Components/Maincalulator/buttons.jsx";
 import styles from "./Css modules/app.module.css";
 import Features_comp from "./Components/features_comp.jsx";
 import Header from "./Components/header.jsx";
@@ -14,31 +14,31 @@ function App() {
   const [finalRes, setFinalRes] = useState(0);
   let fi1 = 0;
   const [color, setColor] = useState("black");
-  function handler(event) {
+  function commonHandler(buttonElement) {
     let operators_arr = ["+", "-", "*", "/"];
     setColor("Black");
     if (ScreenState === "Syntax Error" || ScreenState === "Enter number") {
       if (
-        operators_arr.includes(event.target.innerHTML.trim()) ||
-        event.target.innerHTML === "="
+        operators_arr.includes(buttonElement.innerHTML.trim()) ||
+        buttonElement.innerHTML === "="
       ) {
         setScreenState("Enter number");
-      } else if (event.target.innerHTML === "C") {
+      } else if (buttonElement.innerHTML.substring(0, 4) === "<img") {
         setScreenState("");
       } else {
-        setScreenState(event.target.innerHTML);
-        setExp(event.target.innerHTML);
+        setScreenState(buttonElement.innerHTML);
+        setExp(buttonElement.innerHTML);
       }
     } else {
       if (retain) {
-        if (operators_arr.includes(event.target.innerHTML.trim())) {
+        if (operators_arr.includes(buttonElement.innerHTML.trim())) {
           setExp(finalRes);
           fi1 = 1;
           setWasOp(true);
-        } else if (event.target.innerHTML === "=") {
+        } else if (buttonElement.innerHTML === "=") {
           setExp(finalRes);
           fi1 = 1;
-        } else if (event.target.innerHTML.trim() === "C") {
+        } else if (buttonElement.innerHTML.substring(0, 4) === "<img") {
           console.log(
             "expression after C is ",
             String(finalRes).substring(0, String(finalRes).length - 1)
@@ -51,22 +51,22 @@ function App() {
           exp =
             String(finalRes).substring(0, String(finalRes).length - 1) + " "; //The " " is added because the control of the code will go in a piece of code where the exp's last digit will be trimmed again therefore when that happens no data is lost and " " is trimmed
         }
-        if (event.target.innerHTML !== "C")
-          setScreenState(event.target.innerHTML);
+        if (buttonElement.innerHTML.substring(0, 4) !== "<img")
+          setScreenState(buttonElement.innerHTML);
         setRetain(false);
       } else if (
-        !operators_arr.includes(event.target.innerHTML.trim()) &&
+        !operators_arr.includes(buttonElement.innerHTML.trim()) &&
         wasOp === false
       ) {
-        setScreenState(ScreenState + event.target.innerHTML);
+        setScreenState(ScreenState + buttonElement.innerHTML);
       } else {
-        setScreenState(event.target.innerHTML);
+        setScreenState(buttonElement.innerHTML);
         setWasOp(true);
-        if (!operators_arr.includes(event.target.innerHTML.trim())) {
+        if (!operators_arr.includes(buttonElement.innerHTML.trim())) {
           setWasOp(false);
         }
       }
-      if (event.target.innerHTML === "=") {
+      if (buttonElement.innerHTML === "=") {
         console.log("finalRes value is ", finalRes);
         if (exp !== "") {
           try {
@@ -81,7 +81,7 @@ function App() {
         } else {
           setScreenState(ScreenState);
         }
-      } else if (event.target.innerHTML === "C") {
+      } else if (buttonElement.innerHTML.substring(0, 4) === "<img") {
         if (String(ScreenState).length > 0) {
           setScreenState(
             String(ScreenState).substring(0, String(ScreenState).length - 1)
@@ -90,11 +90,21 @@ function App() {
         } else setScreenState(""); //Expression does not need any change when the screen is blank and ScreenState is set to null as otherwise we will get C on the display
       } else {
         if (fi1 === 1) {
-          setExp(finalRes + event.target.innerHTML);
-        } else setExp(exp + event.target.innerHTML); //Adding the numbers to exp string
+          setExp(finalRes + buttonElement.innerHTML);
+        } else setExp(exp + buttonElement.innerHTML); //Adding the numbers to exp string
       }
       console.log("The expression right now : ", exp);
     }
+    if (buttonElement.innerHTML === "C") {
+      setScreenState("");
+      setExp("");
+      setColor("black");
+      setRetain(false);
+      setFinalRes(0);
+    }
+  }
+  function handler(event) {
+    if (event.target.tagName === "BUTTON") commonHandler(event.target);
   }
   return (
     <>
@@ -105,6 +115,7 @@ function App() {
           handler={handler}
           screenState={ScreenState}
           screenSet={setScreenState}
+          commonHandler={commonHandler}
         />
       </div>
       <Features_comp />

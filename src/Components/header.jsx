@@ -1,5 +1,5 @@
-import img from "../assets/akar-icons_calculator.png";
-function Header(props) {
+import img from "../assets/calculator.png";
+function Header() {
   return (
     <header
       style={{
